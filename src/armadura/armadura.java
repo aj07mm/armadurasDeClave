@@ -1,6 +1,4 @@
 package armadura;
-
-
 import java.applet.AudioClip;
 
 import java.util.*;
@@ -64,6 +62,37 @@ public class armadura extends PApplet {
 		size(xs, ys);
 		background(255);
 		copy(clave, 0, 0, 736, 133, 0, 0, xs, ys);
+	}
+	
+	public void draw() {
+		text(contador + "/" + tom , 800, 195);//Escreve o Tom no canto da tela
+		//System.out.println(tom + "/" + acd);
+		verifica_armadura(tom,acd);
+		
+		for(i=1;i<=6;i++){
+			noFill();//mantem quadrados sem preenchimento
+			if(this.acd == "bemo")
+				bemo(i);//desenha quadros em config bemol
+			if(this.acd == "sus")
+				sus(i);//desenha quadros em config sus
+			//if ( (mouseX > rectX && mouseX < rectX+rectW) && (mouseY > rectY && mouseY < rectY+rectH) ) {
+					rect(rectX,rectY,rectW,rectH);
+					 if (acd=="sus" && mousePressed && (mouseButton == LEFT)) {
+						 if ( (mouseX > rectX && mouseX < rectX+rectW) && (mouseY > rectY && mouseY < rectY+rectH) ) {
+						  image (sustenido,rectX,rectY);
+						  sus_add_acd(rectX,rectY);
+						 }
+					  }
+					 if (acd=="bemo" && mousePressed && (mouseButton == LEFT)) {
+						 if ( (mouseX > rectX && mouseX < rectX+rectW) && (mouseY > rectY && mouseY < rectY+rectH) ) {
+						 image (bemol,rectX,rectY);
+						 bemo_add_acd(rectX,rectY);
+						 }
+					  }
+			//}
+
+		}
+					
 	}
 	
 	public void clear(){
@@ -488,43 +517,7 @@ public class armadura extends PApplet {
 	public void alert(){
 		sc.playMidiFile("alert.mid",30);
 		noLoop();
-	}
-
-	
-	public void draw() {
-		text(contador + "/" + tom , 800, 195);//Escreve o Tom no canto da tela
-		//System.out.println(tom + "/" + acd);
-		verifica_armadura(tom,acd);
-		
-		for(i=1;i<=6;i++){
-			noFill();//mantem quadrados sem preenchimento
-			if(this.acd == "bemo")
-				bemo(i);//desenha quadros em config bemol
-			if(this.acd == "sus")
-				sus(i);//desenha quadros em config sus
-			//if ( (mouseX > rectX && mouseX < rectX+rectW) && (mouseY > rectY && mouseY < rectY+rectH) ) {
-					rect(rectX,rectY,rectW,rectH);
-					 if (acd=="sus" && mousePressed && (mouseButton == LEFT)) {
-						 if ( (mouseX > rectX && mouseX < rectX+rectW) && (mouseY > rectY && mouseY < rectY+rectH) ) {
-						  image (sustenido,rectX,rectY);
-						  sus_add_acd(rectX,rectY);
-						 }
-					  }
-					 if (acd=="bemo" && mousePressed && (mouseButton == LEFT)) {
-						 if ( (mouseX > rectX && mouseX < rectX+rectW) && (mouseY > rectY && mouseY < rectY+rectH) ) {
-						 image (bemol,rectX,rectY);
-						 bemo_add_acd(rectX,rectY);
-						 }
-					  }
-					 
-			//}
-
-		}
-		
-			
-	}
-
-	
+	}	
 		
 }
 
