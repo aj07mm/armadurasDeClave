@@ -1,5 +1,10 @@
 armadurasDeClave
 ================
 
-Jogo de memorização de armaduras de clave 
-feito em java com applet usando Processing e a lib SoundCipher
+Game for clef memorization
+done with applet using Processing and lib SoundCipher
+
+
+##How to run:
+
+	build using eclipse
